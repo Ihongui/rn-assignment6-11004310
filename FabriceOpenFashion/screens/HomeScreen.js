@@ -85,13 +85,13 @@ const HomeScreen = ({ navigation }) => {
     <View style={styles.container}>
       <View style={styles.header}>
         <TouchableOpacity>
-          <Image source={require("../assets/Logo.png")} style={styles.icon} />
+          <Image source={require("../assets/Menu.png")} style={styles.icon} />
         </TouchableOpacity>
-        <Image source={require("../assets/Menu.png")} style={styles.logo} />
+        <Image source={require("../assets/Logo.png")} style={styles.logo} />
         <View style={styles.headerIcons}>
           <TouchableOpacity>
             <Image
-              source={require("../assets/search.png")}
+              source={require("../assets/Search.png")}
               style={styles.icon}
             />
           </TouchableOpacity>
