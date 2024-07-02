@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
-  Button,
   FlatList,
   Image,
   TouchableOpacity,
@@ -35,6 +34,16 @@ const CartScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
+      <View style={styles.header}>
+        <Image
+          source={require("../assets/Logo.png")}
+          style={styles.titleImage}
+        />
+        <TouchableOpacity>
+          <Image source={require("../assets/Search.png")} style={styles.icon} />
+        </TouchableOpacity>
+      </View>
+      <Text style={styles.headerText}>CHECKOUT</Text>
       <FlatList
         data={cart}
         keyExtractor={(item) => item.id}
@@ -43,14 +52,15 @@ const CartScreen = ({ navigation }) => {
             <Image source={item.image} style={styles.itemImage} />
             <View style={styles.itemDetails}>
               <Text style={styles.itemTitle}>{item.title}</Text>
+              <Text style={styles.itemSubtitle}>{item.subtitle}</Text>
               <Text style={styles.itemPrice}>${item.price}</Text>
-              <TouchableOpacity onPress={() => removeFromCart(item.id)}>
-                <Image
-                  source={require("../assets/remove.png")}
-                  style={styles.removeIcon}
-                />
-              </TouchableOpacity>
             </View>
+            <TouchableOpacity onPress={() => removeFromCart(item.id)}>
+              <Image
+                source={require("../assets/remove.png")}
+                style={styles.removeIcon}
+              />
+            </TouchableOpacity>
           </View>
         )}
       />
@@ -58,11 +68,12 @@ const CartScreen = ({ navigation }) => {
         <Text style={styles.totalText}>EST. TOTAL</Text>
         <Text style={styles.totalAmount}>${calculateTotal()}</Text>
       </View>
-      <Button
-        title="Go to Home"
+      <TouchableOpacity
+        style={styles.checkoutButton}
         onPress={() => navigation.navigate("Home")}
-        style={styles.homeButton}
-      />
+      >
+        <Text style={styles.checkoutButtonText}>CHECKOUT</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -70,11 +81,33 @@ const CartScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "#fff",
     padding: 10,
-    backgroundColor: "#f5f5f5",
+  },
+  header: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingVertical: 10,
+  },
+  titleImage: {
+    width: 120,
+    height: 40,
+    resizeMode: "contain",
+  },
+  icon: {
+    width: 24,
+    height: 24,
+  },
+  headerText: {
+    fontSize: 24,
+    fontWeight: "bold",
+    textAlign: "center",
+    marginVertical: 20,
   },
   itemContainer: {
     flexDirection: "row",
+    alignItems: "center",
     marginVertical: 10,
     backgroundColor: "#fff",
     padding: 10,
@@ -86,22 +119,25 @@ const styles = StyleSheet.create({
     elevation: 2,
   },
   itemImage: {
-    width: 100,
-    height: 100,
+    width: 80,
+    height: 120,
     borderRadius: 5,
   },
   itemDetails: {
     flex: 1,
     marginLeft: 10,
-    justifyContent: "space-between",
   },
   itemTitle: {
     fontSize: 16,
     fontWeight: "bold",
   },
-  itemPrice: {
+  itemSubtitle: {
     fontSize: 14,
     color: "#888",
+  },
+  itemPrice: {
+    fontSize: 16,
+    color: "#e60000",
   },
   removeIcon: {
     width: 24,
@@ -123,12 +159,20 @@ const styles = StyleSheet.create({
   totalAmount: {
     fontSize: 18,
     fontWeight: "bold",
-    color: "#ff6f61",
+    color: "#e60000",
   },
-  homeButton: {
-    marginTop: 10,
-    backgroundColor: "#ff6f61",
+  checkoutButton: {
+    backgroundColor: "#000",
+    paddingVertical: 15,
+    paddingHorizontal: 20,
     borderRadius: 5,
+    alignItems: "center",
+    marginTop: 20,
+  },
+  checkoutButtonText: {
+    color: "#fff",
+    fontSize: 18,
+    fontWeight: "bold",
   },
 });
 

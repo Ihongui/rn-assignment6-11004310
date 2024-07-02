@@ -15,49 +15,56 @@ const products = [
     id: "1",
     title: "Office Wear",
     subtitle: "Reversible Angora Cardigan",
-    price: 120,
-    image: require("../assets/dress1.png"),
+    price: 320,
+    image: require("../assets/africa21.png"),
   },
   {
     id: "2",
     title: "Black",
     subtitle: "Reversible Angora Cardigan",
-    price: 120,
-    image: require("../assets/dress2.png"),
+    price: 220,
+    image: require("../assets/africa26.jpeg"),
   },
   {
     id: "3",
-    title: "Church Wear",
+    title: "west Wear",
     subtitle: "Reversible Angora Cardigan",
-    price: 120,
-    image: require("../assets/dress3.png"),
+    price: 150,
+    image: require("../assets/africa22.jpeg"),
   },
   {
     id: "4",
     title: "Lamerei",
     subtitle: "Reversible Angora Cardigan",
-    price: 120,
-    image: require("../assets/dress4.png"),
+    price: 100,
+    image: require("../assets/africa23.jpeg"),
   },
   {
     id: "5",
     title: "Office Wear",
     subtitle: "Reversible Angora Cardigan",
-    price: 120,
-    image: require("../assets/dress5.png"),
+    price: 320,
+    image: require("../assets/africa24.jpeg"),
   },
   {
     id: "6",
     title: "Church Wear",
     subtitle: "Reversible Angora Cardigan",
-    price: 120,
+    price: 420,
     image: require("../assets/dress6.png"),
   },
   {
     id: "7",
+    title: "Tradice",
+    subtitle: "Reversible Angora Cardigan",
+    price: 550,
+    image: require("../assets/africa25.jpeg"),
+  },
+  {
+    id: "8",
     title: "Lamerei",
     subtitle: "Reversible Angora Cardigan",
-    price: 120,
+    price: 720,
     image: require("../assets/dress7.png"),
   },
 ];
@@ -103,7 +110,14 @@ const HomeScreen = ({ navigation }) => {
           </TouchableOpacity>
         </View>
       </View>
-      <Text style={styles.storyText}>OUR STORY</Text>
+      <Text style={styles.storyText}>OUR STORY </Text>
+      <Text>From Fabrice IHONGUI</Text>
+      <TouchableOpacity>
+        <Image
+          source={require("../assets/addbutton.png")}
+          style={styles.addbutton}
+        />
+      </TouchableOpacity>
       <FlatList
         data={products}
         keyExtractor={(item) => item.id}
@@ -123,7 +137,10 @@ const HomeScreen = ({ navigation }) => {
           </View>
         )}
       />
-      <Button title="Go to Cart" onPress={() => navigation.navigate("Cart")} />
+      <Button
+        title="View your Items"
+        onPress={() => navigation.navigate("Cart")}
+      />
     </View>
   );
 };
@@ -157,6 +174,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: "center",
     marginVertical: 20,
+    left: -120,
   },
   productContainer: {
     flex: 1,
@@ -164,14 +182,15 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   productImage: {
-    width: 150,
-    height: 200,
+    width: 175,
+    height: 250,
     resizeMode: "cover",
     marginBottom: 10,
   },
   productTitle: {
     fontSize: 16,
     fontWeight: "bold",
+    left: -50,
   },
   productSubtitle: {
     fontSize: 14,
@@ -180,11 +199,18 @@ const styles = StyleSheet.create({
   productPrice: {
     fontSize: 16,
     color: "#e60000",
+    left: -70,
   },
   addButton: {
     width: 30,
     height: 30,
     marginTop: 10,
+    top: -120,
+    left: 70,
+  },
+  addbutton: {
+    top: -65,
+    left: 260,
   },
 });
 
